@@ -6,7 +6,7 @@
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2021-05-05T11:24:08.277Z</updated>
+  <updated>2021-05-05T15:17:28.196Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linked-list-cycle-ii</title>
+    <link href="https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/"/>
+    <id>https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/</id>
+    <published>2021-05-05T14:27:27.000Z</published>
+    <updated>2021-05-05T15:17:28.196Z</updated>
+    
+    <content type="html"><![CDATA[<p>Leetcode链接：<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">https://leetcode-cn.com/problems/linked-list-cycle-ii/</a></p><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p><p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意，pos 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p><p>说明：不允许修改给定的链表。</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>分两个步骤，</p><ul><li>首先通过快慢指针的方法判断链表是否有环；</li><li>接下来如果有环，则寻找入环的第一个节点。</li></ul><p>判断链表是否有环很简单，如果快指针为 null 时，则链表无环；否则有环。</p><p>如果有环，则寻找入环的第一个节点，具体的方法为，</p><p>首先假定链表起点到入环的第一个节点A的长度为a【未知】，到快慢指针相遇的节点B的长度为（a + b）【这个长度是已知的】。</p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230754000.png" class="" title="image-20210505230754000"><p>现在我们想知道a的值，注意到快指针 p_fast 始终是慢指针p走过长度的2倍，所以慢指针 p_slow 从B继续走（a + b）又能回到B点，如果只走a个长度就能回到节点A。</p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230537824.png" class="" title="image-20210505230537824"><p>但是a的值是不知道的，解决思路是曲线救国，注意到起点到A的长度是a，那么可以用一个从起点开始的新慢指针 p_slow2 和从节点B开始的慢指针 p_slow 同步走，相遇的地方必然是入环的第一个节点A。 </p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230632200.png" class="" title="image-20210505230632200"><h2 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 步骤一：使用快慢指针判断链表是否有环</span></span><br><span class="line">        ListNode p = head, p2 = head;</span><br><span class="line">        <span class="keyword">boolean</span> hasCycle = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (p2.next != <span class="keyword">null</span> &amp;&amp; p2.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            p = p.next;</span><br><span class="line">            p2 = p2.next.next;</span><br><span class="line">            <span class="keyword">if</span> (p == p2) &#123;</span><br><span class="line">                hasCycle = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 步骤二：若有环，找到入环开始的节点</span></span><br><span class="line">        <span class="keyword">if</span> (hasCycle) &#123;</span><br><span class="line">            ListNode q = head;</span><br><span class="line">            <span class="keyword">while</span> (p != q) &#123;</span><br><span class="line">                p = p.next;</span><br><span class="line">                q = q.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> q;</span><br><span class="line">        &#125; <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Leetcode链接：&lt;a href=&quot;https://leetcode-cn.com/problems/linked-list-cycle-ii/&quot;&gt;https://leetcode-cn.com/problems/linked-list-cycle-ii/&lt;/a&gt;&lt;/p</summary>
+      
+    
+    
+    
+    <category term="算法与数据结构" scheme="https://algorithmofdish.tech/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="leetcode" scheme="https://algorithmofdish.tech/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/leetcode/"/>
+    
+    
+    <category term="快慢指针" scheme="https://algorithmofdish.tech/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/"/>
+    
+    <category term="链表" scheme="https://algorithmofdish.tech/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo上markdown图片路径与Typora保持一致</title>
