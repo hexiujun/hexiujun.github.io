@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>He&#39;s Blog</title>
   
-  
+  <subtitle>算法小菜</subtitle>
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2021-05-05T15:17:28.196Z</updated>
+  <updated>2021-05-22T01:52:36.772Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -21,14 +21,16 @@
     <link href="https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/"/>
     <id>https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/</id>
     <published>2021-05-05T14:27:27.000Z</published>
-    <updated>2021-05-05T15:17:28.196Z</updated>
-    
-    <content type="html"><![CDATA[<p>Leetcode链接：<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">https://leetcode-cn.com/problems/linked-list-cycle-ii/</a></p><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p><p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意，pos 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p><p>说明：不允许修改给定的链表。</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>分两个步骤，</p><ul><li>首先通过快慢指针的方法判断链表是否有环；</li><li>接下来如果有环，则寻找入环的第一个节点。</li></ul><p>判断链表是否有环很简单，如果快指针为 null 时，则链表无环；否则有环。</p><p>如果有环，则寻找入环的第一个节点，具体的方法为，</p><p>首先假定链表起点到入环的第一个节点A的长度为a【未知】，到快慢指针相遇的节点B的长度为（a + b）【这个长度是已知的】。</p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230754000.png" class="" title="image-20210505230754000"><p>现在我们想知道a的值，注意到快指针 p_fast 始终是慢指针p走过长度的2倍，所以慢指针 p_slow 从B继续走（a + b）又能回到B点，如果只走a个长度就能回到节点A。</p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230537824.png" class="" title="image-20210505230537824"><p>但是a的值是不知道的，解决思路是曲线救国，注意到起点到A的长度是a，那么可以用一个从起点开始的新慢指针 p_slow2 和从节点B开始的慢指针 p_slow 同步走，相遇的地方必然是入环的第一个节点A。 </p><img src="/2021/05/05/linked-list-cycle-ii/image-20210505230632200.png" class="" title="image-20210505230632200"><h2 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 步骤一：使用快慢指针判断链表是否有环</span></span><br><span class="line">        ListNode p = head, p2 = head;</span><br><span class="line">        <span class="keyword">boolean</span> hasCycle = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (p2.next != <span class="keyword">null</span> &amp;&amp; p2.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            p = p.next;</span><br><span class="line">            p2 = p2.next.next;</span><br><span class="line">            <span class="keyword">if</span> (p == p2) &#123;</span><br><span class="line">                hasCycle = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 步骤二：若有环，找到入环开始的节点</span></span><br><span class="line">        <span class="keyword">if</span> (hasCycle) &#123;</span><br><span class="line">            ListNode q = head;</span><br><span class="line">            <span class="keyword">while</span> (p != q) &#123;</span><br><span class="line">                p = p.next;</span><br><span class="line">                q = q.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> q;</span><br><span class="line">        &#125; <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <updated>2021-05-22T01:52:36.772Z</updated>
     
     
       
       
-    <summary type="html">&lt;p&gt;Leetcode链接：&lt;a href=&quot;https://leetcode-cn.com/problems/linked-list-cycle-ii/&quot;&gt;https://leetcode-cn.com/problems/linked-list-cycle-ii/&lt;/a&gt;&lt;/p</summary>
+        
+        
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;Leetcode链接：&lt;a</summary>
+        
       
     
     
@@ -46,17 +48,18 @@
   
   <entry>
     <title>Hexo上markdown图片路径与Typora保持一致</title>
-    <link href="https://algorithmofdish.tech/2021/05/05/Hexo%E4%B8%8Amarkdown%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8ETypora%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4/"/>
-    <id>https://algorithmofdish.tech/2021/05/05/Hexo%E4%B8%8Amarkdown%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8ETypora%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4/</id>
+    <link href="https://algorithmofdish.tech/2021/05/05/hexo-shang-markdown-tu-pian-lu-jing-yu-typora-bao-chi-yi-zhi/"/>
+    <id>https://algorithmofdish.tech/2021/05/05/hexo-shang-markdown-tu-pian-lu-jing-yu-typora-bao-chi-yi-zhi/</id>
     <published>2021-05-05T09:26:13.000Z</published>
-    <updated>2021-05-05T11:24:08.277Z</updated>
-    
-    <content type="html"><![CDATA[<p>Typora是一款很好用的markdown语法编辑器，我希望使用Typora写好博客后，直接通过hexo部署到个人博客主页上面去。但有个问题是，如果markdown文件里面有图片路径时，在部署到hexo上时需要重新修改图片路径，否则会有问题。每次手动修改显然很麻烦，因此需要看看hexo是否有比较友好的支持。</p><p>Typora本地插入图片的路径有两种方式：一个是绝对路径，一个是相对路径（相对于当前文件所在的路径）。</p><p>Hexo通过<code>hexo-renderer-marked</code>插件实现了对markdown语法的支持，其中默认插入图片的方式为 <code>![](/images/image.jpg)</code> ，它是一个相对路径（相对于Hexo工作目录下的 <code>source</code> 文件夹）的方式。</p><p>首先，如果Typora使用本地的绝对路径插入图片，那么在执行 <code>hexo g</code> 时需要将本地的绝对路径转换成对应的相对路径，这个目前暂未看到有相关的插件实现。</p><p>其次，如果Typora使用相对路径插入图片，问题在于Typora和Hexo所相对的路径是不一致的。对此，Hexo提供了一个更组织化的方式来管理资源，可以通过将 <code>_config.yml</code> 配置文件中的 <code>post_asset_folder</code> 选项设置为 <code>true</code> 来打开。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>该功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt;</code> 命令创建新文章时自动创建一个文件夹。这个资源文件夹名与这个文章文件名相同。将所有与你的文章有关的资源（如图片）放在这个关联文件夹中之后，你可以通过相对路径来引用它们。如，我使用 <code>hexo new mytitle</code> 创建了一篇文章 <code>mytitle.md</code> ，会同时在该文章文件所在的路径上创建文件夹 <code>mytitle/</code>，我们在该文件夹里面添加图片 <code>mytitle/my.png</code>，这时我们在 <code>mytitle.md</code> 文件中插入该图片的方式为 <code>![](my.png)</code> 就可以了。</p><p>跟Typora很接近了，但Typora需要的是 <code>&#123;% asset_img my.png  %&#125;</code> （此处显示有个bug，Hexo自动将满足 <code>mytitle/my.png</code> 格式的图片路径转换成Hexo图片标签插件了，而实际上这里我用了反引号，按理说不应该转义的。。。），即</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](mytitle&#x2F;my.png)</span><br></pre></td></tr></table></figure><p>因此还需要一步转换：<code>mytitle/my.png  -&gt; my.png</code> 。幸运的是，Hexo提供了一款插件 <code>hexo-image-link</code> 来实现这一步转换，在Hexo根目录下执行 <code>npm install hexo-image-link --save</code> 安装该插件即可，无需额外的配置。</p><p>至此，问题解决！总结下来操作上只需要做两个步骤即可：</p><ol><li><p>安装插件 <code>hexo-image-link</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br></pre></td></tr></table></figure></li><li><p>打开Hexo资源管理配置开关</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li></ol><p>最后，上一个例子，在本篇博客最后编辑一行，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; source&#x2F;_posts&#x2F;2021&#x2F;05&#x2F;05&#x2F;Hexo上markdown图片路径与Typora保持一致.md</span><br><span class="line">![](Hexo上markdown图片路径与Typora保持一致&#x2F;古剑3.jpg)</span><br></pre></td></tr></table></figure><p>接下来你可以看到本篇博客显示如下图片，</p><img src="/2021/05/05/Hexo%E4%B8%8Amarkdown%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%B8%8ETypora%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4/%E5%8F%A4%E5%89%913.jpg" class="">]]></content>
+    <updated>2021-05-22T03:50:17.730Z</updated>
     
     
       
       
+        
+        
     <summary type="html">&lt;p&gt;Typora是一款很好用的markdown语法编辑器，我希望使用Typora写好博客后，直接通过hexo部署到个人博客主页上面去。但有个问题是，如果markdown文件里面有图片路径时，在部署到hexo上时需要重新修改图片路径，否则会有问题。每次手动修改显然很麻烦，因此需要</summary>
+        
       
     
     
