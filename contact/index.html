@@ -244,7 +244,13 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/barrager.css">
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.barrager.js"></script>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -261,7 +267,13 @@
                 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
                 <script>
                     var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
                         startDelay: 300,
                         typeSpeed: 100,
                         loop: true,
@@ -286,6 +298,21 @@
     </div>
 </div>
 
+<style>
+    #send{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #0ba360;
+    }
+    #clear{
+        margin-bottom: 10px;
+        width: 49%;
+        background-color: #e7c65c;
+    }
+    p{
+        text-align: center;
+    }
+</style>
 <main class="content">
     <div id="contact" class="container chip-container">
         <div class="card">
@@ -295,7 +322,11 @@
                 </div>
                 
             </div>
+            <!--valine评论弹幕-->
+            
         </div>
+
+        <!--其他评论card-->
         <div class="card">
             
 
@@ -306,8 +337,8 @@
             
 
             
-			
-			
+
+            
 
             
 
@@ -318,11 +349,13 @@
 
     <footer class="page-footer bg-color">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">Xiujun He</a>
@@ -330,26 +363,28 @@
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.4k</span>&nbsp;字
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">1.4k</span>
             
             
             
+                
             
             
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
             </span>
             
             <br>
+
+            <!-- 运行天数提醒. -->
             
             <br>
             
@@ -540,7 +575,8 @@ $(function () {
 
     
 
-	
+    <!--腾讯兔小巢-->
+    
     
 
     
