@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linked-list-cycle-ii, He&#39;s Blog">
+    <meta name="keywords" content="Go语言：select语句, He&#39;s Blog">
     <meta name="description" content="个人技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linked-list-cycle-ii | He&#39;s Blog</title>
+    <title>Go语言：select语句 | He&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -248,12 +248,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linked-list-cycle-ii</h1>
+                    <h1 class="description center-align post-title">Go语言：select语句</h1>
                 </div>
             </div>
         </div>
@@ -369,12 +369,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">
-                                <span class="chip bg-color">快慢指针</span>
+                            <a href="/tags/go/">
+                                <span class="chip bg-color">go</span>
                             </a>
                         
-                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                <span class="chip bg-color">链表</span>
+                            <a href="/tags/select/">
+                                <span class="chip bg-color">select</span>
                             </a>
                         
                     </div>
@@ -385,12 +385,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                算法与数据结构
-                            </a>
-                        
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/leetcode/" class="post-category">
-                                leetcode
+                            <a href="/categories/golang/" class="post-category">
+                                golang
                             </a>
                         
                     </div>
@@ -402,21 +398,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-05
+                    2022-01-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2022-01-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    559
+                    732
                 </div>
                 
 
@@ -447,67 +443,84 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[toc]</p>
-<p>Leetcode链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">https://leetcode-cn.com/problems/linked-list-cycle-ii/</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
-<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。注意，pos 仅仅是用于标识环的情况，并不会作为参数传递到函数中。</p>
-<p>说明：不允许修改给定的链表。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>分两个步骤，</p>
+<h2 id="Go语言：select语句"><a href="#Go语言：select语句" class="headerlink" title="Go语言：select语句"></a>Go语言：select语句</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>功能：select 随机执行一个可运行的 case。如果没有 case 可运行，它将阻塞，直到有 case 可运行。</p>
+<p>语法：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">select</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">case</span> clauseA<span class="token punctuation">:</span>
+    statementA
+<span class="token keyword">case</span> clauseB<span class="token punctuation">:</span>
+    statementB
+<span class="token keyword">default</span><span class="token punctuation">:</span>
+    statementC
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>说明：</p>
 <ul>
-<li>首先通过快慢指针的方法判断链表是否有环；</li>
-<li>接下来如果有环，则寻找入环的第一个节点。</li>
+<li>case 中表达式必须是 Channel 收发操作。</li>
+<li>无论哪一个表达式返回，都会立刻执行 case 中的代码。</li>
+<li>当 select 中两个 case 同时被触发时，会随机执行其中一个，从而避免饥饿问题发生。</li>
+<li>default 语句：提供非阻塞的收发的特性。若存在可收发的 Channel ，直接处理该 case 的语句；否则，执行 default 中的语句。</li>
 </ul>
-<p>判断链表是否有环很简单，如果快指针为 null 时，则链表无环；否则有环。</p>
-<p>如果有环，则寻找入环的第一个节点，具体的方法为，</p>
-<p>首先假定链表起点到入环的第一个节点A的长度为a【未知】，到快慢指针相遇的节点B的长度为（a + b）【这个长度是已知的】。</p>
-<img src="/2021/05/05/linked-list-cycle-ii/image-20210505230754000.png" class="" title="image-20210505230754000">
-
-<p>现在我们想知道a的值，注意到快指针 p_fast 始终是慢指针p走过长度的2倍，所以慢指针 p_slow 从B继续走（a + b）又能回到B点，如果只走a个长度就能回到节点A。</p>
-<img src="/2021/05/05/linked-list-cycle-ii/image-20210505230537824.png" class="" title="image-20210505230537824">
-
-<p>但是a的值是不知道的，解决思路是曲线救国，注意到起点到A的长度是a，那么可以用一个从起点开始的新慢指针 p_slow2 和从节点B开始的慢指针 p_slow 同步走，相遇的地方必然是入环的第一个节点A。 </p>
-<img src="/2021/05/05/linked-list-cycle-ii/image-20210505230632200.png" class="" title="image-20210505230632200">
-
-<h2 id="编码实现"><a href="#编码实现" class="headerlink" title="编码实现"></a>编码实现</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
- * Definition for singly-linked list.
- * class ListNode &#123;
- *     int val;
- *     ListNode next;
- *     ListNode(int x) &#123;
- *         val = x;
- *         next = null;
- *     &#125;
- * &#125;
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">detectCycle</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// 步骤一：使用快慢指针判断链表是否有环</span>
-        <span class="token class-name">ListNode</span> p <span class="token operator">=</span> head<span class="token punctuation">,</span> p2 <span class="token operator">=</span> head<span class="token punctuation">;</span>
-        <span class="token keyword">boolean</span> hasCycle <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>p2<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> p2<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            p <span class="token operator">=</span> p<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            p2 <span class="token operator">=</span> p2<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> p2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                hasCycle <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        
-        <span class="token comment">// 步骤二：若有环，找到入环开始的节点</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>hasCycle<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token class-name">ListNode</span> q <span class="token operator">=</span> head<span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> q<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                p <span class="token operator">=</span> p<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-                q <span class="token operator">=</span> q<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token keyword">return</span> q<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> 
-            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<p>select 能够让 Goroutine 同时等待多个 Channel 可读或可写，在多个文件或者 Channel 状态改变之前，select 会一直阻塞当前线程或 Goroutine 。</p>
+<h3 id="select-的几种使用场景"><a href="#select-的几种使用场景" class="headerlink" title="select 的几种使用场景"></a>select 的几种使用场景</h3><ol>
+<li><p>阻塞操作</p>
+<p>使用空的 select 语句，会直接阻塞当前 Goroutine，导致 Goroutine 进入无法被唤醒的永久休眠状态。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">select</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>单一管道</p>
+<p>select 中只包含一个 case ，编译器会将 select 改写成 if 条件语句。若 case 中 Channel 是空指针时，会直接挂起当前 Goroutine 并陷入永久休眠。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
+        c <span class="token operator">&lt;-</span> <span class="token string">"one message"</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+    
+    <span class="token keyword">select</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">case</span> msg <span class="token operator">:=</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"received"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 等价于</span>
+    <span class="token comment">// if msg := &lt;- c &#123;</span>
+    <span class="token comment">//     fmt.Println("received", msg)</span>
+    <span class="token comment">// &#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>非阻塞操作：</p>
+<p>select中包含多个case，且其中一个是 default 语句。若不存在可收发的 Channel ，直接执行 default 中的语句。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">select</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">case</span> msg <span class="token operator">:=</span> <span class="token operator">&lt;-</span> c<span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"received"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"no message received"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h3 id="编译器对-select-的处理"><a href="#编译器对-select-的处理" class="headerlink" title="编译器对 select 的处理"></a>编译器对 select 的处理</h3><p>编译器对 select 语句的一般处理流程：</p>
+<ol>
+<li>将所有 case 转换成包含 Channel 以及类型等信息的 <code>runtime.scase</code> 结构体。</li>
+<li>调用 <code>runtime.selectgo</code> 从多个就绪的 Channel 中选择一个可执行的 <code>runtime.scase</code> 结构体。</li>
+<li>通过 for 循环生成一组 if 语句，在语句中判断自己是不是被选中的 case 。</li>
+</ol>
+<p>随机执行的关键运行时函数：<code>runtime.selectgo</code> ，它的执行步骤为，</p>
+<ol>
+<li>确定 case 的处理顺序<ul>
+<li>轮询顺序：通过 <code>runtime.fastrandom</code> 函数引入随机性。</li>
+<li>加锁顺序：按照 Channel 的地址排序后确定加锁顺序。</li>
+</ul>
+</li>
+<li>根据轮询顺序遍历所有的 case ，查看是否有可立即处理的 Channel 。<ul>
+<li>如果存在，直接获取 case 对应的索引并返回</li>
+<li>否则，创建 <code>runtime.sudog</code> 结构体，并将当前 Goroutine 加入到所有相关的 Channel 收发队列，并调用 <code>runtime.gopark</code> 挂起当前 Goroutine ，等待调度器的唤醒。</li>
+</ul>
+</li>
+<li>当调度器唤醒当前 Goroutine 时，会再次按照加锁顺序遍历所有的 case ，从中查找需要被处理的 <code>runtime.sudog</code> 对应的索引。</li>
+</ol>
+<p>select 关键字是 Go 语言特有的控制结构，需要编译器和运行时函数共同实现。</p>
 
                 
             </div>
@@ -534,7 +547,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/">https://algorithmofdish.tech/2021/05/05/linked-list-cycle-ii/</a>
+                    <a href="https://algorithmofdish.tech/2022/01/16/go-yu-yan-select-yu-ju/">https://algorithmofdish.tech/2022/01/16/go-yu-yan-select-yu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,12 +585,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">
-                                    <span class="chip bg-color">快慢指针</span>
+                                <a href="/tags/go/">
+                                    <span class="chip bg-color">go</span>
                                 </a>
                             
-                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
-                                    <span class="chip bg-color">链表</span>
+                                <a href="/tags/select/">
+                                    <span class="chip bg-color">select</span>
                                 </a>
                             
                         </div>
@@ -623,9 +636,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/01/16/go-yu-yan-select-yu-ju/">
                     <div class="card-image">
@@ -643,9 +657,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -658,6 +672,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -680,13 +695,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/05/hexo-shang-markdown-tu-pian-lu-jing-yu-typora-bao-chi-yi-zhi/">
+                <a href="/2021/05/05/linked-list-cycle-ii/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Hexo上markdown图片路径与Typora保持一致">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="linked-list-cycle-ii">
                         
-                        <span class="card-title">Hexo上markdown图片路径与Typora保持一致</span>
+                        <span class="card-title">linked-list-cycle-ii</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -703,8 +718,12 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%8E%AF%E5%A2%83/" class="post-category">
-                                    环境
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    算法与数据结构
+                                </a>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/leetcode/" class="post-category">
+                                    leetcode
                                 </a>
                             
                             
@@ -714,8 +733,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                        <span class="chip bg-color">博客</span>
+                    <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">快慢指针</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                        <span class="chip bg-color">链表</span>
                     </a>
                     
                 </div>

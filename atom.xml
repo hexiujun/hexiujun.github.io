@@ -6,7 +6,7 @@
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2021-05-22T01:52:36.772Z</updated>
+  <updated>2022-01-16T10:12:24.202Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go语言：select语句</title>
+    <link href="https://algorithmofdish.tech/2022/01/16/go-yu-yan-select-yu-ju/"/>
+    <id>https://algorithmofdish.tech/2022/01/16/go-yu-yan-select-yu-ju/</id>
+    <published>2022-01-16T10:12:24.000Z</published>
+    <updated>2022-01-16T10:12:24.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h2 id=&quot;Go语言：select语句&quot;&gt;&lt;a href=&quot;#Go语言：select语句&quot; class=&quot;headerlink&quot; title=&quot;Go语言：select语句&quot;&gt;&lt;/a&gt;Go语言：select语句&lt;/h2&gt;&lt;h3 id=&quot;语法&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="golang" scheme="https://algorithmofdish.tech/categories/golang/"/>
+    
+    
+    <category term="go" scheme="https://algorithmofdish.tech/tags/go/"/>
+    
+    <category term="select" scheme="https://algorithmofdish.tech/tags/select/"/>
+    
+  </entry>
   
   <entry>
     <title>linked-list-cycle-ii</title>
