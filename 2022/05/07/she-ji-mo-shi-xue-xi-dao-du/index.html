@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vscode + Remote SSH + clangd Linux内核源码阅读环境搭建, He&#39;s Blog">
+    <meta name="keywords" content="设计模式学习导读, He&#39;s Blog">
     <meta name="description" content="个人技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vscode + Remote SSH + clangd Linux内核源码阅读环境搭建 | He&#39;s Blog</title>
+    <title>设计模式学习导读 | He&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -253,7 +253,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vscode + Remote SSH + clangd Linux内核源码阅读环境搭建</h1>
+                    <h1 class="description center-align post-title">设计模式学习导读</h1>
                 </div>
             </div>
         </div>
@@ -369,8 +369,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vscode%E9%98%85%E8%AF%BBLinux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81/">
-                                <span class="chip bg-color">vscode阅读Linux内核源码</span>
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
                             </a>
                         
                     </div>
@@ -381,8 +381,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%8E%AF%E5%A2%83/" class="post-category">
-                                环境
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
                             </a>
                         
                     </div>
@@ -394,28 +394,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-04
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-04
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    987
+                    2.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    9 分
                 </div>
                 
 
@@ -438,84 +438,164 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1、vscode-Remote-SSH-远程连接Linux虚拟机"><a href="#1、vscode-Remote-SSH-远程连接Linux虚拟机" class="headerlink" title="1、vscode + Remote SSH 远程连接Linux虚拟机"></a>1、vscode + Remote SSH 远程连接Linux虚拟机</h3><h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><ul>
-<li>vscode运行在Windows环境</li>
-<li>Linux虚拟机是在Windows环境下通过VMWare安装<ul>
-<li>Linux版本：openEuler 22.03</li>
-<li>涉及到的软件包安装基本上都是基于 rpm 包安装的</li>
+                <p>课程笔记：<a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100039001">极客时间—设计模式之美</a></p>
+<h2 id="设计模式学习导读"><a href="#设计模式学习导读" class="headerlink" title="设计模式学习导读"></a>设计模式学习导读</h2><h3 id="为什么要学习设计模式？"><a href="#为什么要学习设计模式？" class="headerlink" title="为什么要学习设计模式？"></a>为什么要学习设计模式？</h3><ol>
+<li>应对面试中的设计模式相关问题</li>
+<li>告别写被别人吐槽的烂代码</li>
+<li>提高复杂代码的设计和开发能力</li>
+<li>让读源码、学框架事半功倍</li>
+<li>为你的职场发展做铺垫</li>
+</ol>
+<p>有些能力，要早点锻炼；有些东西，要早点知道；有些书，要早点读。这样在你后面的生活、工作、学习中，才能一直发挥作用。不要等到好多年后，看到了，才恍然大悟，后悔没有早点去学、去看。</p>
+<p>设计模式作为一门与编程、开发有着直接关系的基础知识，是你现在就要开始学习的。早点去学习，以后的项目就都可以拿来锻炼，每写一行代码都是对内功的利用和加深，是可以受益一整个职业生涯的事情。</p>
+<h3 id="从哪些维度评判代码质量的好坏？"><a href="#从哪些维度评判代码质量的好坏？" class="headerlink" title="从哪些维度评判代码质量的好坏？"></a>从哪些维度评判代码质量的好坏？</h3><p>写出好代码的前提：能够辨别代码写得”好“还是”烂“。</p>
+<p>评价代码质量好坏的认知：</p>
+<ul>
+<li>需要综合各种因素来进行评价。</li>
+<li>不同的评价维度也并不是完全独立的，有些是具有包含关系、重叠关系或者可以互相影响的。</li>
+<li>各种评价维度也并不是非黑即白的。</li>
+<li>对一段代码的质量评价，常常有很强的主观性。</li>
+</ul>
+<h4 id="7个最常用的代码评价标准"><a href="#7个最常用的代码评价标准" class="headerlink" title="7个最常用的代码评价标准"></a>7个最常用的代码评价标准</h4><ol>
+<li><p>可维护性（Maintainability）</p>
+<p>什么是代码的可维护性？</p>
+<p>“维护”主要包括修改bug、修改老的代码、添加新的代码之类的工作。</p>
+<p>“代码易维护”是指：在不破坏原有代码设计、不引入新的bug的情况下，能够快速地修改或者添加代码。</p>
+<p>“代码不易维护”是指：修改或者添加代码需要冒着极大的引入新bug的风险，并且需要花费很长的时间才能完成。</p>
+<p>可维护性的重要性：对于一个项目来说，维护代码的时间远远大于编写代码的时间。工程师大部分的时间可能都是花在修修bug、改改老的功能逻辑、添加一些新的功能逻辑之类的工作上。</p>
+<p>如何量化可维护性？</p>
+<p>代码可维护性的好坏是一个比较主观的评价标准，如：</p>
+<ul>
+<li>代码的可读性好、简洁、可扩展性好，就会使得代码易维护；</li>
+<li>更细化地讲，如果代码分层清晰、模块化好、高内聚低耦合、遵从基于接口而非实现编程的设计原则等等，那就意味着代码易维护；</li>
+<li>代码的易维护性还跟项目代码量的多少、业务的复杂程度、技术复杂程度、文档是否全面、团队成员的开发水平等诸多因素有关；</li>
 </ul>
 </li>
+<li><p>可读性（Readability）</p>
+<p>代码的可读性应该是评价代码质量最重要的指标之一。</p>
+<p>如何评价一段代码的可读性？</p>
+<ul>
+<li>代码是否符合编程规范</li>
+<li>命名是否达意</li>
+<li>注释是否详尽</li>
+<li>函数是否长短合适</li>
+<li>模块划分是否清晰</li>
+<li>是否符合高内聚低耦合</li>
+<li>……</li>
 </ul>
-<h4 id="连接配置过程"><a href="#连接配置过程" class="headerlink" title="连接配置过程"></a>连接配置过程</h4><ol>
-<li><p>安装 <code>Remote - SSH</code> 插件</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403224411641.png" class="" title="image-20220403224411641"></li>
-<li><p>添加远程主机</p>
-<p>首先，打开 vscode 命令输入栏（快捷键 <code>F1</code> 或 <code>Ctrl + Shift + P</code>），搜索 <code>Remote-SSH: Connect to Host...</code> ，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225031001.png" class="" title="image-20220403225031001">
-
-<p>在连接窗口中，输入你要远程连接的远程主机（这里是我的Linux虚拟机），输入格式为：<code>user@host</code>，如 <code>root@192.168.0.111</code> ，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225402199.png" class="" title="image-20220403225402199">
-
-<p>此时会弹出一个新的 vscode 窗口，依此选择远程主机的系统类型（我的是 <code>Linux</code>），输入远程主机的密码，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225628384.png" class="" title="image-20220403225628384">
-
-<p>如果一切正常的话，你将成功连上你的远程主机，此时 vscode 窗口左下角会出现 <code>SSH: 192.168.x.x</code> 表示你连上的远程主机IP。另外，你可以在 <code>explorer</code> 侧边栏点击 <code>OpenFolder</code> ，此时会弹出远程主机的文件目录结构，选择一个文件夹作为你的工作目录即可。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403230253618.png" class="" title="image-20220403230253618">
-
-<p>至此，你就可以直接在Windows环境下通过 vscode 操作远程主机上的代码了。</p>
+<p>一个主观的评价手段：code review。如果你的同事可以轻松地读懂你写的代码，那说明你的代码可读性很好；如果同事在读你写的代码时，有很多疑问，那就说明你的代码可读性有待提高了。</p>
+</li>
+<li><p>可扩展性（Extensibility）</p>
+<p>代码的可扩展性也是一个评价代码质量非常重要的标准。</p>
+<p>它表示我们的代码应对未来需求变化的能力。</p>
+<p>代码的可扩展性是指：我们在不修改或少量修改原有代码的情况下，通过扩展的方式添加新的功能代码。</p>
+</li>
+<li><p>灵活性（Flexibility）</p>
+<p>如何理解灵活性？</p>
+<p>灵活性是一个挺抽象的评价标准，要给它下个定义很难。我们可以通过下面的几个场景来思考什么是灵活性。</p>
+<ul>
+<li>场景1：当我们添加一个新的功能代码的时候，原有代码已经预留好了扩展点，我们不需要修改原有的代码，只要在扩展点上添加新的代码即可。（易扩展、灵活）</li>
+<li>场景2：当我们要实现一个功能的时候，发现原有代码中，已经抽象出了很多底层可以复用的模块、类等代码，我们可以拿来直接使用。（易复用、灵活）</li>
+<li>场景3：当我们使用某组接口的时候，如果这组接口可以应对各种使用场景，满足各种不同的需求。（易用、灵活）</li>
+</ul>
+</li>
+<li><p>简洁性（Simplicity）</p>
+<blockquote>
+<p>KISS原则：”Keep It Simple, Stupid”</p>
+</blockquote>
+<p>代码简洁、逻辑清晰，也就意味着易读、易维护。</p>
+<p>一个偏见：认为简单的代码没有技术含量。实际上，思从深而行从简，真正的高手能云淡风轻地用最简单的方法解决最复杂的问题。这也是一个编程老手跟编程新手的本质区别之一。</p>
+</li>
+<li><p>可复用性（Reusability）</p>
+<p>代码的可复用性可以简单地理解为，尽量减少重复代码的编写，复用已有的代码。</p>
+<p>如何提高代码的可复用性？</p>
+<ul>
+<li>使用继承、多态</li>
+<li>使用单一职责原则</li>
+<li>解耦、高内聚、模块化</li>
+<li>应用DRY设计原则</li>
+</ul>
+</li>
+<li><p>可测试性（Testability）</p>
+<p>代码可测试性的好坏，能从侧面上非常准确地反映代码质量的好坏。</p>
+<p>代码的可测试性差，比较难写单元测试，那基本上就能说明代码设计得有问题。</p>
 </li>
 </ol>
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><ol>
-<li><p>远程主机一直连不上，打开 vscode 的输出控制台，打印 <code>open failed: administratively prohibited: open failed</code> 字样的错误。</p>
-<p>去 vscode 官网，查看 Remote-SSH 插件的问题处理文档：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections">https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections</a> ，搜索关键字，找到相应的解决办法。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403231328858.png" class="" title="image-20220403231328858"></li>
-</ol>
-<h3 id="2、安装-clangd-插件"><a href="#2、安装-clangd-插件" class="headerlink" title="2、安装 clangd 插件"></a>2、安装 <code>clangd</code> 插件</h3><p>安装 <code>clangd</code> 插件，安装好后在 <code>settings.json</code> 中添加如下 <code>clangd</code> 的配置（可按需扩展），</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"clangd.arguments"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"--compile-commands-dir=$&#123;workspaceFolder&#125;"</span><span class="token punctuation">,</span>
-    <span class="token string">"--background-index"</span><span class="token punctuation">,</span>
-    <span class="token string">"--completion-style=detailed"</span><span class="token punctuation">,</span>
-    <span class="token string">"-log=info"</span>
-<span class="token punctuation">]</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="如何才能写出高质量的代码？"><a href="#如何才能写出高质量的代码？" class="headerlink" title="如何才能写出高质量的代码？"></a>如何才能写出高质量的代码？</h3><p>如何写出高质量的代码，也就等同于，如何写出易维护、易读、易扩展、灵活、简洁、可复用、可测试的代码。</p>
+<p>要写出满足这些评价标准的高质量代码，我们需要掌握一些更加细化、更加能落地的编程方法论。包括：</p>
+<ul>
+<li>面向对象设计思想</li>
+<li>设计原则</li>
+<li>设计模式</li>
+<li>编程规范</li>
+<li>重构技巧</li>
+</ul>
+<h3 id="编程方法论"><a href="#编程方法论" class="headerlink" title="编程方法论"></a>编程方法论</h3><h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><p>面向对象因为其具有丰富的特性（封装、抽象、继承、多态），可以实现很多复杂的设计思路，是很多设计原则、设计模式编码实现的基础。</p>
+<p>面向对象编程的相关知识点：</p>
+<ul>
+<li>面向对象四大特性：封装、抽象、继承、多态</li>
+<li>面向对象编程与面向过程编程的区别和联系</li>
+<li>面向对象分析、面向对象设计、面向对象编程</li>
+<li>接口与抽象类的区别以及各自的应用场景</li>
+<li>多用组合少用继承的设计思想</li>
+<li>面向过程的贫血模型和面向对象的充血模型</li>
+</ul>
+<h4 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h4><p>设计原则是指导我们代码设计的一些经验总结。</p>
+<p>对于每一种设计原则，我们需要掌握它的设计初衷、能解决哪些编程问题，有哪些应用场景。</p>
+<p>几个常用的设计原则：</p>
+<ul>
+<li>SOLID原则——SRP单一职责原则</li>
+<li>SOLID原则——OCP开闭原则</li>
+<li>SOLID原则——LSP里氏替换原则</li>
+<li>SOLID原则——ISP接口隔离原则</li>
+<li>SOLID原则——DIP依赖倒置原则</li>
+<li>DRY原则、KISS原则、YAGNI原则、LOD原则</li>
+</ul>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p>设计模式是针对软件开发中经常遇到的一些设计问题，总结出来的一套解决方案或者设计思路。</p>
+<p>设计模式相对于设计原则来说，没那么抽象，而且大部分都不难理解，代码实现也并不复杂。这一块的学习难点是了解它们都能解决哪些问题，掌握典型的应用场景，并且懂得不过度应用。</p>
+<p>23中经典的设计模式：</p>
+<ul>
+<li><p>创建型模式</p>
+<p>常用的有：单例模式、工厂模式（工厂方法模式、抽象工厂模式）、建造者模式</p>
+<p>不常用的有：原型模式</p>
+</li>
+<li><p>结构型模式</p>
+<p>常用的有：代理模式、桥接模式、装饰器模式、适配器模式</p>
+<p>不常用的有：门面模式、组合模式、享元模式</p>
+</li>
+<li><p>行为型模式</p>
+<p>常用的有：观察者模式、模板模式、策略模式、职责链模式、迭代器模式、状态模式。</p>
+<p>不常用的有：访问者模式、备忘录模式、命令模式、解释器模式、中介模式。</p>
+</li>
+</ul>
+<p>对于常用的设计模式，我们要多花点时间理解掌握。对于不常用的设计模式，我们只需要稍微了解即可。</p>
+<h4 id="编程规范"><a href="#编程规范" class="headerlink" title="编程规范"></a>编程规范</h4><p>编程规范主要解决的是代码的可读性问题。</p>
+<p>编程规范相对于设计原则、设计模式，更加具体、更加偏重代码细节。</p>
+<p>可直接看经典书籍：《重构》、《代码整洁之道》</p>
+<h4 id="代码重构"><a href="#代码重构" class="headerlink" title="代码重构"></a>代码重构</h4><p>软件开发是一个不停迭代的过程，因此没有一劳永逸的设计。随着需求的变化，代码的不停堆砌，原有的设计必定会存在这样或那样的问题。</p>
+<p>重构是软件开发中非常重要的一个环节。持续重构是保持代码质量不下降的有效手段，能有效避免代码腐化到无可救药的地步。</p>
+<p>重构的工具包括：</p>
+<ul>
+<li>设计思想</li>
+<li>设计原则</li>
+<li>设计模式</li>
+<li>编程规范</li>
+</ul>
+<p>重构相关的知识点</p>
+<ul>
+<li>重构的目的、对象、时机、方法</li>
+<li>保证重构不出错的技术手段：单元测试和代码的可测试性</li>
+<li>两种不同规模的重构：大重构（大规模高层次）和小重构（小规模低层次）</li>
+</ul>
+<p>学习重构，不仅仅要掌握一些重构技巧、套路，更重要的是建立持续重构的意识，把重构当作开发的一部分，融入到日常的开发中。</p>
+<h4 id="五者之间的联系"><a href="#五者之间的联系" class="headerlink" title="五者之间的联系"></a>五者之间的联系</h4><ul>
+<li>面向对象编程因为其具有丰富的特性，可以实现很多复杂的设计思路，是很多设计原则、设计模式等编码实现的基础。</li>
+<li>设计原则是指导我们代码设计的一些经验总结，对于某些场景下，是否应该应用某种设计模式，具有指导意义。</li>
+<li>设计模式是针对软件开发中经常遇到的一些设计问题，总结出来的一套解决方案或者设计思路。应用设计模式的主要目的是提高代码的可扩展性。从抽象程度来说，设计原则比设计模式更抽象，设计模式更加具体、更加可执行。</li>
+<li>编程规范主要解决的是代码的可读性问题。编程规范相较于设计原则、设计模式，更加具体、更加偏重代码细节、更加能落地。持续的小重构依赖的理论基础主要就是编程规范。</li>
+<li>重构作为保持代码质量不下降的有效手段，利用的就是面向对象、设计原则、设计模式、编码规范这些理论。</li>
+</ul>
 
-<p>注意，<code>clangd</code> 插件跟 <code>C/C++</code> 插件是冲突的，如果使用 <code>clangd</code> 的功能，需要禁用 <code>C/C++</code> 插件。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"C_Cpp.intelliSenseEngine"</span><span class="token operator">:</span> <span class="token string">"Disabled"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>另外，在使用 <code>Remote - SSH</code> 连接上远程 Linux 虚拟机后，需要同时在远程 Linux 虚拟机上安装 <code>clangd</code> 插件，根据 <code>Extensions</code> 侧边栏 <code>clangd</code> 插件的提示按钮 <code>Install in SSH: 192.168.x.x</code> 点击安装即可（可能安装不成功，看后面手动安装步骤）。安装好后，拷贝 <code>clangd</code> 插件的配置到远程 Linux 虚拟机上的 <code>clangd</code> 上，同时配置远程 Linux 虚拟机上安装的 <code>clangd</code> 的可执行文件路径。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220404115705791.png" class="" title="image-20220404115705791">
-
-
-
-<h4 id="手动在远程-Linux-虚拟机上安装-clangd"><a href="#手动在远程-Linux-虚拟机上安装-clangd" class="headerlink" title="手动在远程 Linux 虚拟机上安装 clangd"></a>手动在远程 Linux 虚拟机上安装 <code>clangd</code></h4><ol>
-<li><p>直接在 github 发布页面上下载 <code>clangd</code> 的二进制包，我下载的是 <code>13.0.0</code> 版本的 <code>clangd</code> ： <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd/releases/tag/13.0.0">https://github.com/clangd/clangd/releases/tag/13.0.0</a></p>
-</li>
-<li><p>拷贝二进制包到 Linux 安装目录，解压即可。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">unzip clangd-linux-13.0.0.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>在解压后的文件夹中找到二进制文件 <code>clangd</code> 的文件路径，并在 vscode 中配置远程 Linux 虚拟机上安装的 <code>clangd</code> 的可执行文件路径。（如上所述）</p>
-</li>
-</ol>
-<h3 id="3、生成-clangd-需要的配置文件-compile-commands-json"><a href="#3、生成-clangd-需要的配置文件-compile-commands-json" class="headerlink" title="3、生成 clangd 需要的配置文件 compile_commands.json"></a>3、生成 <code>clangd</code> 需要的配置文件 <code>compile_commands.json</code></h3><h4 id="安装-bear"><a href="#安装-bear" class="headerlink" title="安装 bear"></a>安装 bear</h4><ol>
-<li>直接在 <a target="_blank" rel="noopener" href="https://koji.fedoraproject.org/koji/">https://koji.fedoraproject.org/koji/</a> 下载合适的 bear 版本的 rpm 包，我下载的版本 <code>bear-2.4.4-1.fc31</code> 。</li>
-<li>将 rpm 包拷到 Linux 虚拟机上，通过 <code>yum install bear-2.4.4-1.fc31.x86_64.rpm</code> 安装即可。</li>
-</ol>
-<h4 id="编译内核代码生成compile-commands-json"><a href="#编译内核代码生成compile-commands-json" class="headerlink" title="编译内核代码生成compile_commands.json"></a>编译内核代码生成<code>compile_commands.json</code></h4><p>参考文档：<a target="_blank" rel="noopener" href="https://www.cyberciti.biz/tips/compiling-linux-kernel-26.html">https://www.cyberciti.biz/tips/compiling-linux-kernel-26.html</a></p>
-<ol>
-<li><p>下载指定的内核版本的源码包，可以直接去官网下载：<a target="_blank" rel="noopener" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
-</li>
-<li><p>解压源码包 <code>tar -zxvf kernel.tar.gz</code> ，并进入源码包的根目录。</p>
-</li>
-<li><p>可以直接拷贝当前Linux虚拟机的内核配置文件（<code>cp -v /boot/config-$(uname -r) .config</code>），或直接使用 <code>make menuconfig</code> 来配置内核支持的特性和模块配置。</p>
-</li>
-<li><p>安装编译依赖的工具包</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">yum group install &quot;Development Tools&quot;
-yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li><p>使用 <code>bear</code> 编译内核，执行 <code>bear make -j 8</code></p>
-</li>
-<li><p>编译完成后，会在源码包的根目录下生成 <code>compile_commands.json</code> 文件。</p>
-</li>
-</ol>
-<h3 id="4、通过-vscode-阅读内核源码，可自由跳转了"><a href="#4、通过-vscode-阅读内核源码，可自由跳转了" class="headerlink" title="4、通过 vscode 阅读内核源码，可自由跳转了"></a>4、通过 vscode 阅读内核源码，可自由跳转了</h3><video src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/clangd-效果图-2022-04-04.mp4" type='video/mp4' controls='controls'  width='100%' height='100%'>
-</video>
                 
             </div>
             <hr/>
@@ -541,7 +621,7 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://algorithmofdish.tech/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/">https://algorithmofdish.tech/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/</a>
+                    <a href="https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-xue-xi-dao-du/">https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-xue-xi-dao-du/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,8 +659,8 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vscode%E9%98%85%E8%AF%BBLinux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81/">
-                                    <span class="chip bg-color">vscode阅读Linux内核源码</span>
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
                                 </a>
                             
                         </div>
@@ -626,9 +706,60 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/05/07/she-ji-mo-shi-xue-xi-dao-du/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="设计模式学习导读">
+                        
+                        <span class="card-title">设计模式学习导读</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/">
                     <div class="card-image">
@@ -646,9 +777,9 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -670,59 +801,6 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     
                     <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
                         <span class="chip bg-color">装饰器模式</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/16/go-yu-yan-select-yu-ju/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Go语言：select语句">
-                        
-                        <span class="card-title">Go语言：select语句</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/go/">
-                        <span class="chip bg-color">go</span>
-                    </a>
-                    
-                    <a href="/tags/select/">
-                        <span class="chip bg-color">select</span>
                     </a>
                     
                 </div>

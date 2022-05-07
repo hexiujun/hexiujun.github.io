@@ -6,7 +6,7 @@
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2022-05-07T12:43:11.055Z</updated>
+  <updated>2022-05-07T12:51:15.736Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式学习导读</title>
+    <link href="https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-xue-xi-dao-du/"/>
+    <id>https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-xue-xi-dao-du/</id>
+    <published>2022-05-07T12:48:29.000Z</published>
+    <updated>2022-05-07T12:51:15.736Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;课程笔记：&lt;a href=&quot;https://time.geekbang.org/column/intro/100039001&quot;&gt;极客时间—设计模式之美&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;设计模式学习导读&quot;&gt;&lt;a href=&quot;#设计模式学习导读&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之装饰器模式</title>
