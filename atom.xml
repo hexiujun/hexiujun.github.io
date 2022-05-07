@@ -6,7 +6,7 @@
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2022-04-04T05:57:43.710Z</updated>
+  <updated>2022-05-07T11:59:01.576Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之装饰器模式</title>
+    <link href="https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/"/>
+    <id>https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/</id>
+    <published>2022-05-07T11:52:33.000Z</published>
+    <updated>2022-05-07T11:59:01.576Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h3 id=&quot;装饰器模式&quot;&gt;&lt;a href=&quot;#装饰器模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="装饰器模式" scheme="https://algorithmofdish.tech/tags/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>vscode + Remote SSH + clangd Linux内核源码阅读环境搭建</title>

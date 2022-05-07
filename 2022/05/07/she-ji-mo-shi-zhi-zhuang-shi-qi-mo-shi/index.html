@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vscode + Remote SSH + clangd Linux内核源码阅读环境搭建, He&#39;s Blog">
+    <meta name="keywords" content="设计模式之装饰器模式, He&#39;s Blog">
     <meta name="description" content="个人技术博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vscode + Remote SSH + clangd Linux内核源码阅读环境搭建 | He&#39;s Blog</title>
+    <title>设计模式之装饰器模式 | He&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -248,12 +248,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vscode + Remote SSH + clangd Linux内核源码阅读环境搭建</h1>
+                    <h1 class="description center-align post-title">设计模式之装饰器模式</h1>
                 </div>
             </div>
         </div>
@@ -369,8 +369,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vscode%E9%98%85%E8%AF%BBLinux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81/">
-                                <span class="chip bg-color">vscode阅读Linux内核源码</span>
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">装饰器模式</span>
                             </a>
                         
                     </div>
@@ -381,8 +385,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%8E%AF%E5%A2%83/" class="post-category">
-                                环境
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
                             </a>
                         
                     </div>
@@ -394,28 +398,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-04
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-04
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    987
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -438,84 +442,152 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1、vscode-Remote-SSH-远程连接Linux虚拟机"><a href="#1、vscode-Remote-SSH-远程连接Linux虚拟机" class="headerlink" title="1、vscode + Remote SSH 远程连接Linux虚拟机"></a>1、vscode + Remote SSH 远程连接Linux虚拟机</h3><h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><ul>
-<li>vscode运行在Windows环境</li>
-<li>Linux虚拟机是在Windows环境下通过VMWare安装<ul>
-<li>Linux版本：openEuler 22.03</li>
-<li>涉及到的软件包安装基本上都是基于 rpm 包安装的</li>
+                <p>[toc]</p>
+<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>解决的问题：装饰器模式主要解决继承关系过于复杂的问题，通过组合来代替继承。</p>
+<p>主要的作用：给原始类添加增强功能。</p>
+<h4 id="案例讲解：通过剖析-Java-IO-类的设计思想来学习装饰器模式"><a href="#案例讲解：通过剖析-Java-IO-类的设计思想来学习装饰器模式" class="headerlink" title="案例讲解：通过剖析 Java IO 类的设计思想来学习装饰器模式"></a>案例讲解：通过剖析 Java IO 类的设计思想来学习装饰器模式</h4><p>Java IO类库的部分继承关系：</p>
+<ul>
+<li>字节流<ul>
+<li><code>InputStream</code>（抽象类）<ul>
+<li><code>PipedInputStream</code></li>
+<li><code>FileInputStream</code></li>
+<li><code>FilterInputStream</code><ul>
+<li><code>BufferedInputStream</code></li>
+<li><code>DataInputStream</code></li>
 </ul>
 </li>
 </ul>
-<h4 id="连接配置过程"><a href="#连接配置过程" class="headerlink" title="连接配置过程"></a>连接配置过程</h4><ol>
-<li><p>安装 <code>Remote - SSH</code> 插件</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403224411641.png" class="" title="image-20220403224411641"></li>
-<li><p>添加远程主机</p>
-<p>首先，打开 vscode 命令输入栏（快捷键 <code>F1</code> 或 <code>Ctrl + Shift + P</code>），搜索 <code>Remote-SSH: Connect to Host...</code> ，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225031001.png" class="" title="image-20220403225031001">
-
-<p>在连接窗口中，输入你要远程连接的远程主机（这里是我的Linux虚拟机），输入格式为：<code>user@host</code>，如 <code>root@192.168.0.111</code> ，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225402199.png" class="" title="image-20220403225402199">
-
-<p>此时会弹出一个新的 vscode 窗口，依此选择远程主机的系统类型（我的是 <code>Linux</code>），输入远程主机的密码，回车。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403225628384.png" class="" title="image-20220403225628384">
-
-<p>如果一切正常的话，你将成功连上你的远程主机，此时 vscode 窗口左下角会出现 <code>SSH: 192.168.x.x</code> 表示你连上的远程主机IP。另外，你可以在 <code>explorer</code> 侧边栏点击 <code>OpenFolder</code> ，此时会弹出远程主机的文件目录结构，选择一个文件夹作为你的工作目录即可。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403230253618.png" class="" title="image-20220403230253618">
-
-<p>至此，你就可以直接在Windows环境下通过 vscode 操作远程主机上的代码了。</p>
 </li>
-</ol>
-<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><ol>
-<li><p>远程主机一直连不上，打开 vscode 的输出控制台，打印 <code>open failed: administratively prohibited: open failed</code> 字样的错误。</p>
-<p>去 vscode 官网，查看 Remote-SSH 插件的问题处理文档：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections">https://code.visualstudio.com/docs/remote/troubleshooting#_troubleshooting-hanging-or-failing-connections</a> ，搜索关键字，找到相应的解决办法。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220403231328858.png" class="" title="image-20220403231328858"></li>
-</ol>
-<h3 id="2、安装-clangd-插件"><a href="#2、安装-clangd-插件" class="headerlink" title="2、安装 clangd 插件"></a>2、安装 <code>clangd</code> 插件</h3><p>安装 <code>clangd</code> 插件，安装好后在 <code>settings.json</code> 中添加如下 <code>clangd</code> 的配置（可按需扩展），</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"clangd.arguments"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"--compile-commands-dir=$&#123;workspaceFolder&#125;"</span><span class="token punctuation">,</span>
-    <span class="token string">"--background-index"</span><span class="token punctuation">,</span>
-    <span class="token string">"--completion-style=detailed"</span><span class="token punctuation">,</span>
-    <span class="token string">"-log=info"</span>
-<span class="token punctuation">]</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>注意，<code>clangd</code> 插件跟 <code>C/C++</code> 插件是冲突的，如果使用 <code>clangd</code> 的功能，需要禁用 <code>C/C++</code> 插件。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"C_Cpp.intelliSenseEngine"</span><span class="token operator">:</span> <span class="token string">"Disabled"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>另外，在使用 <code>Remote - SSH</code> 连接上远程 Linux 虚拟机后，需要同时在远程 Linux 虚拟机上安装 <code>clangd</code> 插件，根据 <code>Extensions</code> 侧边栏 <code>clangd</code> 插件的提示按钮 <code>Install in SSH: 192.168.x.x</code> 点击安装即可（可能安装不成功，看后面手动安装步骤）。安装好后，拷贝 <code>clangd</code> 插件的配置到远程 Linux 虚拟机上的 <code>clangd</code> 上，同时配置远程 Linux 虚拟机上安装的 <code>clangd</code> 的可执行文件路径。</p>
-<img src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/image-20220404115705791.png" class="" title="image-20220404115705791">
-
-
-
-<h4 id="手动在远程-Linux-虚拟机上安装-clangd"><a href="#手动在远程-Linux-虚拟机上安装-clangd" class="headerlink" title="手动在远程 Linux 虚拟机上安装 clangd"></a>手动在远程 Linux 虚拟机上安装 <code>clangd</code></h4><ol>
-<li><p>直接在 github 发布页面上下载 <code>clangd</code> 的二进制包，我下载的是 <code>13.0.0</code> 版本的 <code>clangd</code> ： <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd/releases/tag/13.0.0">https://github.com/clangd/clangd/releases/tag/13.0.0</a></p>
+<li><code>OutputStream</code>（抽象类）</li>
+</ul>
 </li>
-<li><p>拷贝二进制包到 Linux 安装目录，解压即可。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">unzip clangd-linux-13.0.0.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>在解压后的文件夹中找到二进制文件 <code>clangd</code> 的文件路径，并在 vscode 中配置远程 Linux 虚拟机上安装的 <code>clangd</code> 的可执行文件路径。（如上所述）</p>
-</li>
-</ol>
-<h3 id="3、生成-clangd-需要的配置文件-compile-commands-json"><a href="#3、生成-clangd-需要的配置文件-compile-commands-json" class="headerlink" title="3、生成 clangd 需要的配置文件 compile_commands.json"></a>3、生成 <code>clangd</code> 需要的配置文件 <code>compile_commands.json</code></h3><h4 id="安装-bear"><a href="#安装-bear" class="headerlink" title="安装 bear"></a>安装 bear</h4><ol>
-<li>直接在 <a target="_blank" rel="noopener" href="https://koji.fedoraproject.org/koji/">https://koji.fedoraproject.org/koji/</a> 下载合适的 bear 版本的 rpm 包，我下载的版本 <code>bear-2.4.4-1.fc31</code> 。</li>
-<li>将 rpm 包拷到 Linux 虚拟机上，通过 <code>yum install bear-2.4.4-1.fc31.x86_64.rpm</code> 安装即可。</li>
-</ol>
-<h4 id="编译内核代码生成compile-commands-json"><a href="#编译内核代码生成compile-commands-json" class="headerlink" title="编译内核代码生成compile_commands.json"></a>编译内核代码生成<code>compile_commands.json</code></h4><p>参考文档：<a target="_blank" rel="noopener" href="https://www.cyberciti.biz/tips/compiling-linux-kernel-26.html">https://www.cyberciti.biz/tips/compiling-linux-kernel-26.html</a></p>
+<li>字符流</li>
+</ul>
+<p>其中，<code>FileInputStream</code> 是专门用来读取文件流的子类。<code>BufferedInputStream</code>是一个支持带缓存功能的数据读取类，可以提高数据读取的效率。</p>
+<p>考虑给 <code>FileInputStream</code> 扩展一个支持带缓存读取的功能，有两种设计方案：</p>
 <ol>
-<li><p>下载指定的内核版本的源码包，可以直接去官网下载：<a target="_blank" rel="noopener" href="https://www.kernel.org/">https://www.kernel.org/</a></p>
+<li><p>基于继承的设计方案</p>
+<p>添加一个继承 <code>FileInputStream</code> 的子类 <code>BufferedFileInputStream</code> 来实现该功能。</p>
+<p>该方案的问题：假如我需要再给 <code>PipedInputStream</code> 添加缓存功能，则需要再添加一个继承自 <code>PipedInputStream</code> 的子类 <code>BufferedPipedInputStream</code> ；另外，除了支持缓存读取之外，如果我们还需要对功能进行其他方面的增强，比如 <code>DataInputStream</code> 类（支持按照基本数据类型来读取数据），就需要再继续派生出 <code>DataFileInputStream</code> 、 <code>DataPipedInputStream</code> 等 n 多个子类。依此类推，如果需要附加更多的增强功能（假设有 m 个），<strong>那么就会导致组合爆炸（新增 <code>m x n</code> 个子类），类继承结构变得无比复杂，代码既不好扩展，也不好维护。</strong></p>
 </li>
-<li><p>解压源码包 <code>tar -zxvf kernel.tar.gz</code> ，并进入源码包的根目录。</p>
+<li><p>基于装饰器模式的设计方案</p>
+<p>简而言之，就是“使用组合来替代继承”。</p>
+<p>这里给出了部分的代码实现结构：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">skip</span><span class="token punctuation">(</span><span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BufferedInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">// 实现基于缓存的读数据接口</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DataInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">// 实现基于读取基本类型数据的接口</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用下面的代码，我们就可以分别创建一个支持缓存功能、和支持读取基本数据类型的读取文件流。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> bin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/path/to/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">InputStream</span> din <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/path/to/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如果总共需要添加 m 个附加功能，那我们只需要创建 m 个继承自 <code>InputStream</code> 的子类即可。</p>
+<p>装饰器模式相对于简单的组合关系，还有两个比较特殊的地方。</p>
+<ol>
+<li><p>第一个特殊的地方：装饰器类和原始类继承同样的父类，这样我们可以对原始类“嵌套”多个装饰器类。</p>
+<p>比如，下面一段代码，通过对 <code>FileInputStream</code> 嵌套了两个装饰器类，让它既支持缓存读取，又支持按照基本数据类型来读取数据。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/path/to/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">InputStream</span> bin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">InputStream</span> din <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span>bin<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>不得不感叹这样的设计是真的优雅。</p>
 </li>
-<li><p>可以直接拷贝当前Linux虚拟机的内核配置文件（<code>cp -v /boot/config-$(uname -r) .config</code>），或直接使用 <code>make menuconfig</code> 来配置内核支持的特性和模块配置。</p>
-</li>
-<li><p>安装编译依赖的工具包</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">yum group install &quot;Development Tools&quot;
-yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li><p>使用 <code>bear</code> 编译内核，执行 <code>bear make -j 8</code></p>
-</li>
-<li><p>编译完成后，会在源码包的根目录下生成 <code>compile_commands.json</code> 文件。</p>
-</li>
+<li><p>第二个特殊的地方：装饰器类是对功能的增强，这也是装饰器模式应用场景的一个重要特点。</p>
+<p>这里我们通过对比装饰器模式和代理模式的设计差异来加深认识。</p>
+<p>代理模式跟装饰器模式的代码结构很像，它们都是符合“组合关系”的设计。但是，它们的设计意图是不同的。</p>
+<ul>
+<li>代理模式中，代理类附加的是跟原始类无关的功能；</li>
+<li>装饰器模式中，装饰器类附加的是跟原始类相关的增强功能。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 代理模式的代码结构（下面的接口可替换成抽象类）</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">implements</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AProxy</span> <span class="token keyword">implements</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">IA</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">AProxy</span><span class="token punctuation">(</span><span class="token class-name">IA</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 新添加的代理逻辑</span>
+        a<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 新添加的代理逻辑</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 装饰器模式的代码结构（下面的接口可替换成抽象类）</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">implements</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ADecorator</span> <span class="token keyword">implements</span> IA <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">IA</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">ADecorator</span><span class="token punctuation">(</span><span class="token class-name">IA</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 功能增强代码</span>
+        a<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 功能增强代码</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        a<span class="token punctuation">.</span><span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h3 id="4、通过-vscode-阅读内核源码，可自由跳转了"><a href="#4、通过-vscode-阅读内核源码，可自由跳转了" class="headerlink" title="4、通过 vscode 阅读内核源码，可自由跳转了"></a>4、通过 vscode 阅读内核源码，可自由跳转了</h3><video src="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/clangd-效果图-2022-04-04.mp4" type='video/mp4' controls='controls'  width='100%' height='100%'>
-</video>
+<p>在装饰器模式中，即使对于不需要增强的函数来说，装饰器类还是必须把它重新实现一遍，简单包裹对被装饰类的函数调用。原因也很容易理解，装饰器类既然是对原始类功能的增强，那么原始类已有的功能就必须被继承下来。而这带来了一个问题，增加了重复代码。</p>
+<p>聪明的你可能已经想到了解决方案：使用继承。这也是 Java IO 类的设计中，<code>BufferedInputStream</code> 并没有直接继承自 <code>InputStream</code>，而是抽象出了一个装饰器父类 <code>FilterInputStream</code> 的原因所在。这样，装饰器类只需要实现它需要增强的方法就可以了，其他方法继承装饰器父类的默认实现。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FilterInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token class-name">FilterInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">skip</span><span class="token punctuation">(</span><span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ol>
+<h4 id="装饰器模式类图"><a href="#装饰器模式类图" class="headerlink" title="装饰器模式类图"></a>装饰器模式类图</h4><p><img src="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%5Cimage-20220506223021312.png" alt="image-20220506223021312"></p>
+
                 
             </div>
             <hr/>
@@ -541,7 +613,7 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://algorithmofdish.tech/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/">https://algorithmofdish.tech/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/</a>
+                    <a href="https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/">https://algorithmofdish.tech/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -579,8 +651,12 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vscode%E9%98%85%E8%AF%BBLinux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81/">
-                                    <span class="chip bg-color">vscode阅读Linux内核源码</span>
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">装饰器模式</span>
                                 </a>
                             
                         </div>
@@ -626,9 +702,10 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/05/07/she-ji-mo-shi-zhi-zhuang-shi-qi-mo-shi/">
                     <div class="card-image">
@@ -646,9 +723,9 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -661,6 +738,7 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -683,13 +761,13 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/16/go-yu-yan-select-yu-ju/">
+                <a href="/2022/04/04/vscode-remote-ssh-clangd-linux-nei-he-yuan-ma-yue-du-huan-jing-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Go语言：select语句">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="vscode + Remote SSH + clangd Linux内核源码阅读环境搭建">
                         
-                        <span class="card-title">Go语言：select语句</span>
+                        <span class="card-title">vscode + Remote SSH + clangd Linux内核源码阅读环境搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -700,14 +778,14 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
+                            <a href="/categories/%E7%8E%AF%E5%A2%83/" class="post-category">
+                                    环境
                                 </a>
                             
                             
@@ -717,12 +795,8 @@ yum install ncurses-devel bison flex elfutils-libelf-devel openssl-devel<span ar
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/go/">
-                        <span class="chip bg-color">go</span>
-                    </a>
-                    
-                    <a href="/tags/select/">
-                        <span class="chip bg-color">select</span>
+                    <a href="/tags/vscode%E9%98%85%E8%AF%BBLinux%E5%86%85%E6%A0%B8%E6%BA%90%E7%A0%81/">
+                        <span class="chip bg-color">vscode阅读Linux内核源码</span>
                     </a>
                     
                 </div>
