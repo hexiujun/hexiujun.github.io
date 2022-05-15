@@ -6,7 +6,7 @@
   <link href="https://algorithmofdish.tech/atom.xml" rel="self"/>
   
   <link href="https://algorithmofdish.tech/"/>
-  <updated>2022-05-07T14:42:26.021Z</updated>
+  <updated>2022-05-15T06:22:04.338Z</updated>
   <id>https://algorithmofdish.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式之观察者模式</title>
+    <link href="https://algorithmofdish.tech/2022/05/15/she-ji-mo-shi-zhi-guan-cha-zhe-mo-shi/"/>
+    <id>https://algorithmofdish.tech/2022/05/15/she-ji-mo-shi-zhi-guan-cha-zhe-mo-shi/</id>
+    <published>2022-05-15T06:16:29.000Z</published>
+    <updated>2022-05-15T06:22:04.338Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;课程笔记：&lt;a href=&quot;https://time.geekbang.org/column/intro/100039001&quot;&gt;极客时间—设计模式之美&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;观察者模式&quot;&gt;&lt;a href=&quot;#观察者模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="https://algorithmofdish.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="观察者模式" scheme="https://algorithmofdish.tech/tags/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之适配器模式</title>
